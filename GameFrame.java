@@ -15,7 +15,7 @@ public class GameFrame extends JFrame {
         this.setLayout(null);
         Panel panel =  new Panel();
         this.add(panel);
-        panel.setBounds(0, 0, 900, 900);
+        panel.setBounds(0, 0, 882, 882);
 
     }
 
@@ -25,12 +25,14 @@ public class GameFrame extends JFrame {
         }
         protected void paintComponent(Graphics g) {
     
-            for (int i = 0; i < 3; i++) {
-                for (int k = 0; k < 3; k++) {
+            for (int i = 4; i < 891; i+=294) {
+                System.out.println(i);
+                for (int k = 4; k < 891; k+=294) {
                     g.setColor(Color.GRAY);
-                    g.fillRect(i * 300, k * 300, 300, 300);
+                    g.fillRect(i, k, 294, 294);
                     g.setColor(Color.BLACK);
-                    g.drawRect(i * 300, k * 300, 300, 300);
+                    g.drawRect(i, k, 294, 294);
+
                 }
             }
         }
