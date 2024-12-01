@@ -1,41 +1,50 @@
 
-import java.awt.Color;
-import java.awt.Graphics;
 
+import java.awt.Color;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 
 public class GameFrame extends JFrame {
 
     GameFrame() {
-
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setSize(900,900);
+        this.setSize(900,1000);
         this.setVisible(true);
         this.setLayout(null);
-        Panel panel =  new Panel();
-        this.add(panel);
-        panel.setBounds(0, 0, 882, 882);
+        this.getContentPane().setBackground(Color.gray);
+        Grid Maingrid = new Grid(40, 100);
+        this.add(Maingrid);
 
     }
+    public class Grid extends JPanel{
+        public JButton grid[][];
+        int width, height;
+        public Grid(int w, int h){
+            width = w;
+            height = h;
+            grid = new JButton[3][3];
 
-    public class Panel extends JPanel {
-        Cell cell;
-        Panel() {
+            this.setBounds(width, height,   800, 800);
+            this.setLayout(new GridLayout(3,3));
+            gridloop();
+            
         }
-        protected void paintComponent(Graphics g) {
-    
-            for (int i = 4; i < 891; i+=294) {
-                System.out.println(i);
-                for (int k = 4; k < 891; k+=294) {
-                    g.setColor(Color.GRAY);
-                    g.fillRect(i, k, 294, 294);
-                    g.setColor(Color.BLACK);
-                    g.drawRect(i, k, 294, 294);
 
+        public void gridloop(){
+            int a = 0;
+            for(int i = 0; i < grid.length; i++) {
+                for(int k = 0; k < grid.length; k++){
+                    a++;
+                    grid[i][k] = new JButton(""+a);
+                    this.add(grid[i][k]);
                 }
             }
         }
     }
-
 }
+
+
